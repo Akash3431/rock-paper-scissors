@@ -12,6 +12,8 @@ const getComputerChoice = () =>
     }
 }
 
+// Function that takes in two string parameters (either rock, paper or scissors)
+// Returns the result of the game depending on the user's input and the randomized computer selection
 const playRound = (playerSelection, computerSelection) =>
 {
     if (playerSelection === 'rock' && computerSelection === 'scissors')
@@ -53,7 +55,39 @@ const playRound = (playerSelection, computerSelection) =>
 
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
+// Checks if user entered a valid input i.e. either rock, paper, or scissors
+function checkIfValid()
+{
+    
+    while (true)
+    {   
+        let string = prompt('Enter rock, paper, or scissors', ' ')
+        string = string.toLowerCase()
+        if (string === 'rock' || string === 'scissors' || string === 'paper')
+        {
+            return string
+        }
+        console.log('Invalid answer! Please enter rock, paper, or scissors')
+    }
+}
+// One game lasts five rounds.
+const game = () =>
+{
+    // for loop that allows the user to play the game five times
+    for (let i =0; i < 5; i++)
+    {
+        let playerSelection = checkIfValid()
+        let computerSelection = getComputerChoice()
 
-console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerSelection, computerSelection))
+    }
+}
+
+game()
+
+//let example = prompt("Choose Rock, Paper, or Scissors")
+
+//const playerSelection = 'rock';
+//const computerSelection = getComputerChoice();
+
+//console.log(playRound(playerSelection, computerSelection));
