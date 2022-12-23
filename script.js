@@ -55,6 +55,8 @@ const playRound = (playerSelection, computerSelection) =>
 
 }
 
+
+
 // Checks if user entered a valid input i.e. either rock, paper, or scissors
 function checkIfValid()
 {
@@ -70,16 +72,45 @@ function checkIfValid()
         console.log('Invalid answer! Please enter rock, paper, or scissors')
     }
 }
+
+
 // One game lasts five rounds.
 const game = () =>
 {
+    let playerWins = 0
+    let computerWins = 0
+
     // for loop that allows the user to play the game five times
     for (let i =0; i < 5; i++)
     {
         let playerSelection = checkIfValid()
         let computerSelection = getComputerChoice()
 
+        let string = playRound(playerSelection, computerSelection)
+
+        if (string[4] === 'w')
+        {
+            playerWins++
+        }
+        else if (string[4] === 'l')
+        {
+            computerWins++
+        }
+
         console.log(playRound(playerSelection, computerSelection))
+    }
+
+    if (playerWins > computerWins)
+    {
+        console.log(`You win the game! The score was ${playerWins}-${computerWins}`)
+    }
+    else if (computerWins > playerWins)
+    {
+        console.log(`You lose the game! The score was ${playerWins}-${computerWins}`)
+    }
+    else
+    {
+        console.log(`It's a draw! The score was ${playerWins}-${computerWins}`)
     }
 }
 
@@ -90,4 +121,5 @@ game()
 //const playerSelection = 'rock';
 //const computerSelection = getComputerChoice();
 
-//console.log(playRound(playerSelection, computerSelection));
+//console.log(playRound(playerSelection, computerSelection)[4]);
+
